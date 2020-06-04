@@ -1,0 +1,61 @@
+package clasesIvan;
+
+import java.util.Scanner;
+
+public class cifradoCesar { 
+	
+	 static String abecedariomin = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,w,x,y,z";
+	 static String abecedariomax = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,W,X,Y,Z";
+	 static int posicion;	
+	 
+	public static String obtenerTexto(String texto) {
+		Scanner entrada = new Scanner(System.in);
+		System.out.println("introduzca el texto a cifrar: ");
+		texto = entrada.next();
+		System.out.println("introduce cuantas posiciones quieres rotarlo: ");
+		posicion = entrada.nextInt();
+		System.out.println(texto);
+		
+		return texto;
+	}
+	
+	public static void cifrarTexto(String texto) { 
+		String textoCambiado = " ";
+		for(int i = 0; i < texto.length(); i++) {//me recorro el texto q quiero cifrar
+			for(int j = 0; j < abecedariomin.length(); j++) {//recorro las variables donde estan las letras
+				if(texto.charAt(i)== abecedariomin.charAt(j)) {//compruebo si cada posicion de mi texto esta en la variable de las letras
+					if(j + posicion >= abecedariomin.length()) {
+						textoCambiado += (abecedariomin.charAt(j + posicion));
+					}//supongamos q esta en z,es el final
+					//si la posicion de j + posicion es mayor q la longitud de abecedario
+					
+				}
+				else {
+					textoCambiado += abecedariomin.charAt(j + posicion);
+				}
+				 if(texto.charAt(i)== abecedariomax.charAt(j)) {//compruebo si cada posicion de mi texto esta en la variable de las letras
+					if(j + posicion >= abecedariomax.length()) {
+						textoCambiado += (abecedariomax.charAt(j + posicion));
+					}//supongamos q esta en z,es el final
+					//si la posicion de j + posicion es mayor q la longitud de abecedario
+					
+				}
+				else {
+					textoCambiado += abecedariomax.charAt(j + posicion);
+				}
+			}
+			
+		}
+		System.out.println(textoCambiado);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		Scanner entrada = new Scanner(System.in);
+		String textoCodificado= new String();
+		textoCodificado = cifradoCesar.obtenerTexto(textoCodificado);
+		cifrarTexto(textoCodificado);
+
+	}
+
+}
